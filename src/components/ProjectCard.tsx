@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   slug 
 }) => {
   return (
-    <Link to={`/work/${slug}`} className="project-card aspect-[4/5]">
+    <Link to={`/work/${slug}`} className="project-card aspect-[4/5] group">
       <img
         src={image}
         alt={title}

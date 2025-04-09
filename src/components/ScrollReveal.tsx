@@ -5,12 +5,14 @@ interface ScrollRevealProps {
   children: ReactNode;
   threshold?: number;
   delay?: number;
+  className?: string;
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({ 
   children, 
   threshold = 0.1,
-  delay = 0 
+  delay = 0,
+  className = ''
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   
@@ -44,7 +46,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   }, [threshold, delay]);
 
   return (
-    <div ref={ref} className="container-reveal">
+    <div ref={ref} className={`container-reveal ${className}`}>
       {children}
     </div>
   );
