@@ -1,4 +1,3 @@
-
 export const siteData = {
   metadata: {
     siteName: "PSDJ Interior Architecture",
@@ -146,7 +145,7 @@ export const siteData = {
         images: [
           "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?q=80&w=2074&auto=format&fit=crop",
           "https://images.unsplash.com/photo-1600607688705-68c9dae89186?q=80&w=2070&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
+          "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2070&auto=format&fit=crop"
         ],
         slug: "belgravia-residence"
       },
@@ -302,6 +301,93 @@ export const siteData = {
         lng: -0.134792
       }
     }
+  },
+  
+  expertise: {
+    hero: {
+      title: "Our Expertise",
+      subtitle: "Specialized knowledge and proven capabilities in interior architecture",
+      backgroundImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop"
+    },
+    intro: {
+      title: "Areas of Specialization",
+      text: "Our team brings together decades of experience across a wide range of disciplines, allowing us to deliver truly comprehensive interior architecture solutions. From technical expertise to creative vision, we offer an unparalleled depth of knowledge in every aspect of the design process."
+    },
+    areas: [
+      {
+        id: 1,
+        title: "Residential Design",
+        description: "From historic townhouses to contemporary apartments, our residential expertise encompasses properties of all scales and styles. We create homes that perfectly balance aesthetic aspiration with practical living needs.",
+        image: "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?q=80&w=2074&auto=format&fit=crop",
+        icon: "Home"
+      },
+      {
+        id: 2,
+        title: "Hospitality Spaces",
+        description: "Our hospitality designs create memorable guest experiences through thoughtful space planning, atmospheric lighting, and carefully curated material palettes that establish distinctive brand identities.",
+        image: "https://images.unsplash.com/photo-1600607687644-c7f34b10a46f?q=80&w=2070&auto=format&fit=crop",
+        icon: "UtensilsCrossed"
+      },
+      {
+        id: 3,
+        title: "Retail Environments",
+        description: "We design retail spaces that tell compelling brand stories, create immersive customer journeys, and ultimately drive commercial success through innovative spatial experiences.",
+        image: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2070&auto=format&fit=crop",
+        icon: "ShoppingBag"
+      },
+      {
+        id: 4,
+        title: "Workspace Design",
+        description: "Our workplace designs reflect contemporary working practices, creating environments that foster collaboration, focus, wellbeing and productivity while expressing company culture.",
+        image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=2074&auto=format&fit=crop",
+        icon: "Briefcase"
+      },
+      {
+        id: 5,
+        title: "Heritage Conservation",
+        description: "We specialize in sensitively marrying modern interventions with historic fabric, enhancing the character of listed buildings while meeting contemporary functional requirements.",
+        image: "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?q=80&w=2074&auto=format&fit=crop",
+        icon: "Landmark"
+      },
+      {
+        id: 6,
+        title: "Wellness & Spa",
+        description: "Our wellness designs create serene, restorative environments through careful consideration of sensory elements, material quality, and spatial flow.",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+        icon: "Sparkles"
+      }
+    ],
+    process: {
+      title: "Our Approach to Expertise",
+      items: [
+        {
+          title: "Knowledge Integration",
+          description: "We bring together diverse expertise from architecture, interior design, product design, and project management to deliver holistic solutions."
+        },
+        {
+          title: "Continuous Learning",
+          description: "Our team actively pursues ongoing professional development and stays abreast of the latest industry innovations and techniques."
+        },
+        {
+          title: "Specialist Collaboration",
+          description: "For highly specialized requirements, we collaborate with leading experts in fields such as lighting design, acoustics, and sustainability."
+        },
+        {
+          title: "Technical Excellence",
+          description: "We maintain rigorous standards of technical accuracy and detail in all aspects of our design documentation."
+        }
+      ]
+    },
+    testimonials: [
+      {
+        quote: "Their expertise in heritage properties is unmatched. They found the perfect balance between preserving the historic character of our home while introducing contemporary elements.",
+        author: "Private Client, Kensington Townhouse"
+      },
+      {
+        quote: "The PSDJ team's retail expertise transformed our flagship store. They understood our brand immediately and created a space that has significantly enhanced customer engagement.",
+        author: "Marketing Director, Luxury Retailer"
+      }
+    ]
   }
 };
 

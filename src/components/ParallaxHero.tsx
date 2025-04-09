@@ -16,6 +16,7 @@ const ParallaxHero: React.FC<ParallaxHeroProps> = ({
   const contentRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,11 +40,64 @@ const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         titleRef.current.style.transform = `translateY(-${titleTranslate}px)`;
         subtitleRef.current.style.transform = `translateY(-${subtitleTranslate}px)`;
       }
+      
+      if (overlayRef.current) {
+        const scrollPosition = window.scrollY;
+        const opacity = 0.4 + (scrollPosition / 1000);
+        overlayRef.current.style.opacity = Math.min(opacity, 0.7).toString();
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Animated particles for hero
+  useEffect(() => {
+    const createParticle = () => {
+      if (!contentRef.current) return;
+      
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full bg-white opacity-20';
+      
+      // Random size between 3px and 8px
+      const size = Math.random() * 5 + 3;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Random position
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      
+      // Animation duration between 10s and 20s
+      const duration = Math.random() * 10 + 10;
+      particle.style.animation = `float-animation ${duration}s ease-in-out infinite`;
+      
+      // Random delay
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      
+      contentRef.current.appendChild(particle);
+      
+      // Remove particle after some time to avoid memory issues
+      setTimeout(() => {
+        if (particle.parentNode) {
+          particle.parentNode.removeChild(particle);
+        }
+      }, duration * 1000);
+    };
+    
+    // Create initial particles
+    for (let i = 0; i < 10; i++) {
+      createParticle();
+    }
+    
+    // Create new particles periodically
+    const intervalId = setInterval(createParticle, 3000);
+    
+    return () => {
+      clearInterval(intervalId);
     };
   }, []);
 
@@ -53,13 +107,17 @@ const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         ref={parallaxRef} 
         className="parallax-bg" 
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${backgroundImage})`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
       >
-        <div className="absolute inset-0 bg-psdj-charcoal/20 mix-blend-multiply"></div>
       </div>
+      
+      <div 
+        ref={overlayRef} 
+        className="absolute inset-0 bg-psdj-charcoal mix-blend-multiply opacity-40 transition-opacity duration-700"
+      ></div>
       
       <div ref={contentRef} className="absolute inset-0 flex flex-col justify-center items-center text-white z-10 px-6 text-center bg-transparent overflow-hidden">
         <h1 

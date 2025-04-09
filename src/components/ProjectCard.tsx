@@ -20,6 +20,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   slug 
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  
+  // Parallax effect on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (imageRef.current) {
+        const scrollY = window.scrollY;
+        const cardTop = cardRef.current?.getBoundingClientRect().top || 0;
+        const offset = (scrollY - cardTop - window.innerHeight) * 0.05;
+        imageRef.current.style.transform = `translateY(${Math.min(offset, 30)}px) scale(1.05)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   // Parallax effect for card on mouse move
   useEffect(() => {
@@ -58,37 +76,36 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       }
     };
   }, []);
+
+  // Define different shapes based on ID
+  const getCardShape = () => {
+    switch (id % 6) {
+      case 0: return 'rounded-tl-3xl rounded-br-3xl rounded-tr-lg rounded-bl-lg';
+      case 1: return 'rounded-tr-3xl rounded-bl-3xl rounded-tl-lg rounded-br-lg';
+      case 2: return 'rounded-t-3xl rounded-b-lg';
+      case 3: return 'rounded-b-3xl rounded-t-lg';
+      case 4: return 'rounded-l-3xl rounded-r-lg';
+      case 5: return 'rounded-r-3xl rounded-l-lg';
+      default: return 'rounded-xl';
+    }
+  };
   
   return (
     <Link to={`/work/${slug}`} className="block group">
       <div 
         ref={cardRef}
-        className="project-card aspect-[4/5] group transition-all duration-500"
-        style={{
-          borderRadius: id % 3 === 0 ? '2rem 0.5rem 2rem 0.5rem' : 
-                     id % 3 === 1 ? '0.5rem 2rem 0.5rem 2rem' : 
-                     '2rem'
-        }}
+        className={`project-card aspect-[4/5] group transition-all duration-500 ${getCardShape()}`}
       >
-        <div className="w-full h-full overflow-hidden" 
-          style={{
-            borderRadius: id % 3 === 0 ? '2rem 0.5rem 2rem 0.5rem' : 
-                      id % 3 === 1 ? '0.5rem 2rem 0.5rem 2rem' : 
-                      '2rem'
-          }}>
+        <div className={`w-full h-full overflow-hidden ${getCardShape()}`}>
           <img
+            ref={imageRef}
             src={image}
             alt={title}
             className="project-card-image"
           />
         </div>
         
-        <div className="project-card-overlay"
-          style={{
-            borderRadius: id % 3 === 0 ? '2rem 0.5rem 2rem 0.5rem' : 
-                      id % 3 === 1 ? '0.5rem 2rem 0.5rem 2rem' : 
-                      '2rem'
-          }}>
+        <div className={`project-card-overlay ${getCardShape()}`}>
           <div className="project-card-content relative z-10">
             <div className="absolute -top-10 left-0 w-10 h-1 bg-psdj-accent transform transition-all duration-500 group-hover:w-20"></div>
             <span className="text-sm uppercase tracking-wider text-psdj-accent mb-1 block">{category}</span>

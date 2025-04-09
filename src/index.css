@@ -201,6 +201,15 @@
     transform: translateY(-10px);
   }
   
+  .expertise-card-icon {
+    transform: scale(1) rotate(0);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .group:hover .expertise-card-icon {
+    transform: scale(1.2) rotate(5deg);
+  }
+  
   .hero-title span {
     animation: float-in 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
     opacity: 0;
@@ -230,6 +239,21 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes float-animation {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(0) translateX(20px);
+  }
+  75% {
+    transform: translateY(20px) translateX(10px);
   }
 }
 
@@ -278,15 +302,6 @@
 
 .animate-float {
   animation: float-animation 6s ease-in-out infinite;
-}
-
-@keyframes float-animation {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
 }
 
 .circle-decoration {
