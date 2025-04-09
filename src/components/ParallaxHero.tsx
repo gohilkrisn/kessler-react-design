@@ -35,7 +35,7 @@ const ParallaxHero: React.FC<ParallaxHeroProps> = ({
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}></div>
-      <div ref={contentRef} className="absolute inset-0 flex flex-col justify-center items-center text-white z-10 px-6 text-center bg-psdj-charcoal">
+      <div ref={contentRef} className="absolute inset-0 flex flex-col justify-center items-center text-white z-10 px-6 text-center bg-transparent">
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-kessler leading-tight mb-6">{title}</h1>
         <p className="text-lg md:text-xl max-w-2xl">{subtitle}</p>
       </div>
