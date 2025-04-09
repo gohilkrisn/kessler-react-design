@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,6 +53,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Custom colors for PSDJ
+				psdj: {
+					'charcoal': '#1A1F2C',
+					'light-gray': '#F1F0FB',
+					'off-white': '#FAFAFA',
+					'accent': '#AD9E6E',
+					'muted': '#D6D3D1'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -62,6 +71,10 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			fontFamily: {
+				'kessler': ['Kessler Display', 'serif'],
+				'sans': ['Montserrat', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +97,43 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { 
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': { 
+						opacity: '1',
+						transform: 'translateY(0)'
+					},
+				},
+				'splash-logo-reveal': {
+					'0%': { 
+						opacity: '0',
+						transform: 'scale(0.8)'
+					},
+					'100%': { 
+						opacity: '1',
+						transform: 'scale(1)'
+					},
+				},
+				'splash-fade-out': {
+					'0%': { 
+						opacity: '1',
+					},
+					'100%': { 
+						opacity: '0',
+						visibility: 'hidden'
+					},
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.8s ease-out forwards',
+				'splash-logo-reveal': 'splash-logo-reveal 1.2s ease-out forwards',
+				'splash-fade-out': 'splash-fade-out 0.8s ease-out forwards 2.5s'
 			}
 		}
 	},
