@@ -110,7 +110,7 @@
   }
   
   .container-reveal {
-    @apply opacity-0;
+    opacity: 0;
   }
   
   .container-reveal.visible {
@@ -131,7 +131,11 @@
   }
   
   .project-card {
-    @apply relative overflow-hidden cursor-pointer;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   }
   
   .project-card-image {
@@ -156,6 +160,85 @@
   
   .project-card:hover .project-card-content {
     @apply translate-y-0 opacity-100;
+  }
+  
+  .service-card {
+    @apply relative bg-white p-8 transition-all duration-500 overflow-hidden;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(135deg, #AD9E6E 0%, rgba(173, 158, 110, 0.2) 100%);
+    transition: height 0.5s ease;
+    z-index: 0;
+  }
+  
+  .service-card:hover::before {
+    height: 100%;
+  }
+  
+  .service-card-content {
+    @apply relative z-10 transition-colors duration-500;
+  }
+  
+  .service-card:hover .service-card-content {
+    @apply text-white;
+  }
+  
+  .service-card-icon {
+    @apply relative mb-6 w-16 h-16 flex items-center justify-center bg-psdj-light-gray rounded-full transition-all duration-500;
+  }
+  
+  .service-card:hover .service-card-icon {
+    @apply bg-white text-psdj-accent;
+    transform: translateY(-10px);
+  }
+  
+  .hero-title span {
+    animation: float-in 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .hero-subtitle {
+    animation: fade-in-delayed 1s forwards;
+    opacity: 0;
+  }
+}
+
+@keyframes float-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-delayed {
+  0%, 50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
   }
 }
 
@@ -182,4 +265,48 @@
 
 .contact-form-button {
   @apply mt-8 bg-psdj-charcoal text-white px-8 py-3 hover:bg-psdj-accent transition-colors duration-300;
+}
+
+.section-heading {
+  @apply relative inline-block font-kessler text-4xl mb-16;
+}
+
+.section-heading::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-psdj-accent to-transparent;
+}
+
+.animate-float {
+  animation: float-animation 6s ease-in-out infinite;
+}
+
+@keyframes float-animation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.circle-decoration {
+  @apply absolute w-64 h-64 rounded-full bg-psdj-accent/10 z-0;
+  animation: pulse-animation 10s infinite alternate;
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.1;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #AD9E6E 0%, #8A7E57 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
